@@ -1,0 +1,7 @@
+{% load show_code %}
+<html>
+<body>
+    <h1>Copy below code and paste it on terminal to get "access_token":</h1>
+    <p>curl -X POST https://oauth2.googleapis.com/token -d "code={{ request.get_full_path|show_code_only:"(?<=&code=)(.*)(?=&scope=)"}}&client_id=836191007258-7k4lkmkrvcn10optddih6l040qm5tish.apps.googleusercontent.com&client_secret=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&redirect_uri=http://127.0.0.1:8000/&access_type=offline&grant_type=authorization_code"</p>
+</body>
+</html>

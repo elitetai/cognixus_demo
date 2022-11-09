@@ -14,8 +14,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path, include
+from django.views.generic import TemplateView
+
+from todo_list.views import register_by_access_token, authentication_test
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('todo/', include('todo_list.urls')),
+    path('', TemplateView.as_view(template_name="show_code.html")),
+
+    # OAuth
+    re_path('api/register-by-access-token/' + r'social/(?P<backend>[^/]+)/$', register_by_access_token),
+    path('api/authentication-test/', authentication_test),
+
 ]
